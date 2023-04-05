@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +18,11 @@ class MainActivity : Activity() {
 
         val extraStr = intent.getStringExtra("text") ?: kotlin.run {
             log("没收到内容")
+            Toast.makeText(
+                this,
+                "外部通过com.chenyue404.receivethenshare.TextReceiver的action打开Activity，并传递key为text的string，则会打开分享面板，分享text的值。",
+                Toast.LENGTH_SHORT
+            ).show()
             finish()
             return
         }
